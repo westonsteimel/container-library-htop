@@ -52,4 +52,11 @@ COPY --from=builder /usr/local/bin/htop /usr/local/bin/htop
 
 USER htop
 
-CMD [ "/usr/local/bin/htop" ]
+ENTRYPOINT [ "/usr/local/bin/htop" ]
+
+LABEL org.opencontainers.image.title="htop" \
+    org.opencontainers.image.description="htop in Docker" \
+    org.opencontainers.image.url="https://github.com/westonsteimel/docker-htop" \
+    org.opencontainers.image.source="https://github.com/westonsteimel/docker-htop" \
+    org.opencontainers.image.version="${CURL_VERSION}"
+
