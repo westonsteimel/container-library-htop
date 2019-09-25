@@ -58,4 +58,4 @@ LABEL org.opencontainers.image.title="htop" \
     org.opencontainers.image.description="htop in Docker" \ 
     org.opencontainers.image.url="https://github.com/westonsteimel/docker-htop" \ 
     org.opencontainers.image.source="https://github.com/westonsteimel/docker-htop" \
-    org.opencontainers.image.version="${CURL_VERSION}"
+    org.opencontainers.image.version="${HTOP_VERSION}"
