@@ -23,7 +23,7 @@ RUN apk update && apk add --no-cache \
     automake \
     ncurses-libs
 
-RUN git clone --depth 1 --branch "${HTOP_VERSION}" https://github.com/hishamhm/htop \
+RUN git clone --depth 1 --branch "${HTOP_VERSION}" https://github.com/htop-dev/htop \
     && cd htop \
     && ./autogen.sh \
     && ./configure \
