@@ -5,7 +5,7 @@
 # 	westonsteimel/htop
 #
 
-ARG HTOP_VERSION="2.2.0"
+ARG HTOP_VERSION="3.0.0"
 
 FROM alpine:edge as builder
 
