@@ -5,11 +5,15 @@
 # 	westonsteimel/htop
 #
 
-ARG HTOP_VERSION="master"
+ARG SOURCE
+ARG REVISION
+ARG CREATED
+ARG VERSION
+ARG GIT_REF="${VERSION}"
 
 FROM alpine:edge as builder
 
-ARG HTOP_VERSION
+ARG GIT_REF
 
 WORKDIR build
 
@@ -23,7 +27,7 @@ RUN apk update && apk add --no-cache \
     automake \
     ncurses-libs
 
-RUN git clone --depth 1 --branch "${HTOP_VERSION}" https://github.com/htop-dev/htop \
+RUN git clone --depth 1 --branch "${GIT_REF}" https://github.com/htop-dev/htop \
     && cd htop \
     && ./autogen.sh \
     && ./configure \
@@ -43,7 +47,10 @@ RUN addgroup htop \
 
 FROM alpine:edge
 
-ARG HTOP_VERSION
+ARG VERSION
+ARG SOURCE
+ARG REVISION
+ARG CREATED
 
 RUN apk update && apk add --no-cache ncurses-libs
 
@@ -56,8 +63,8 @@ ENTRYPOINT [ "/usr/local/bin/htop" ]
 
 LABEL org.opencontainers.image.title="htop" \
     org.opencontainers.image.description="htop in Docker" \ 
-    org.opencontainers.image.url="https://github.com/westonsteimel/docker-htop" \ 
-    org.opencontainers.image.source="https://github.com/westonsteimel/docker-htop" \
-    org.opencontainers.image.version="${HTOP_VERSION}" \
-    version="${HTOP_VERSION}"
+    org.opencontainers.image.source="${SOURCE}" \
+    org.opencontainers.image.revision="${REVISION}" \
+    org.opencontainers.image.created="${CREATED}" \
+    org.opencontainers.image.version="${VERSION}"
 
